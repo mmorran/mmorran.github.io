@@ -1,0 +1,27 @@
+<script src="../lib/tracery.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script>
+var grammarObj = {
+    "namea": ["Rose", "Elizabeth", "Conway", "Henry", "Fleming", "Keith", "George", "Harper", "Madeleine", "Jeff", "Delaney", "Marya", "Jenny", "Sarah", "Mac", "Roger", "Ben", "Deb", "Ellen", "Cameron", "Sebastian", "Sage", "Ellis", "Phillip", "Joan", "Elias", "Dr. Aidman"],
+    "nameb": ["Amy", "Beth", "Samantha", "Kelly", "Liz", "Doug", "Donna", "Mike", "Kris", "Peter", "Felicity"],
+    "cog": ["think", "know", "understand", "believe"],
+    "scale": ["global", "national", "state", "city-wide", "county-wide"],
+    "harm": ["security", "infrastructure", "planning", "development", "expansion", "architecture", "policy", "surveillance", "projects"], 
+    "noun": ["people", "citizens", "supporters", "critics", "politicians", "local law enforcement officers", "educators"],
+    "verb": ["love", "respect", "support", "dislike", "neglect", "fear"], 
+    "thinga": ["Big Bird", "beluga whales", "fried icecream", "donuts", "memes", "outerspace", "Freudian theory", "Pizza the Hut", "hot peppers", "breakfast bacon", "boiled wool", "blowdryers", "coffee mugs", "cowboy hats", "Facebook", "Dr. Pepper"],
+    "solution": ["solved", "rectified", "better understood", "further developed", "questioned"], 
+    "randomnoun": ["practice", "Star Wars sequels", "corgi pictures", "snow cones", "deoderant", "extension cords", "sushi", "IHOP renovations"], 
+    "abstractnoun": ["hope", "love", "support", "community bonding", "secular thinking"],
+    "story": ["#Interviewer#: What do you #cog# about #scale# #harm#? #Interviewee#: I believe that #noun# #verb# the importance of #thinga# in such matters. #Interviewer#: How do you think this can be #solution# locally? #Interviewee#: I think it will take a lot of #randomnoun# and a little extra #abstractnoun#."],
+    "origin": ["#[Interviewer:#namea#][Interviewee:#nameb#]story#"]
+}
+var grammar = tracery.createGrammar(grammarObj)
+function generate(){
+	var t = grammar.flatten("#origin#");
+	$('h1').text(t);
+}
+</script>
+<h1>An Incomprehensible Interview</h1>
+<button onclick="generate()">Generate</button>
