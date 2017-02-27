@@ -1,0 +1,96 @@
+aardvark
+      alligator
+      alpaca
+      antelope
+      armadillo
+      baboon
+      badger
+      beaver
+      bison
+      buffalo
+      camel
+      canary
+      capybara
+      chameleon
+      cheetah
+      chimpanzee
+      chinchilla
+      chipmunk
+      cougar
+      coyote
+      crocodile
+      dingo
+      donkey
+      dromedary
+      elephant
+      ferret
+      finch
+      gazelle
+      gila monster
+      giraffe
+      gopher
+      gorilla
+      grizzly bear
+      ground hog
+      guinea pig
+      hamster
+      hedgehog
+      hippopotamus
+      horse
+      hyena
+      iguana
+      impala
+      jackal
+      jaguar
+      kangaroo
+      koala
+      lemur
+      leopard
+      lizard
+      llama
+      mandrill
+      marmoset
+      mongoose
+      monkey
+      moose
+      mouse
+      muskrat
+      mustang
+      mynah bird
+      ocelot
+      opossum
+      orangutan
+      otter
+      panda
+      panther
+      parakeet
+      parrot
+      platypus
+      polar bear
+      porcupine
+      porpoise
+      prairie dog
+      rabbit
+      raccoon
+      reindeer
+      reptile
+      rhinoceros
+      salamander
+      sheep
+      silver fox
+      skunk
+      sloth
+      snake
+      squirrel
+      tapir
+      tiger
+      turtle
+      walrus
+      warthog
+      weasel
+      whale
+      wildcat
+      wolverine
+      wombat
+      woodchuck
+      zebra
