@@ -1,0 +1,162 @@
+<style>
+h1 {
+	text-align: center;
+	font-size: 2em;
+	font-family: avenir;
+	color: white;
+	text-shadow: 2px 2px #ff0000;
+}
+#textDiv{
+	margin-top: 5%;
+}
+html { 
+  background: url(suzie.jpg) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind("a", function(){
+	showText("Life just")
+	setBgImage('broadcity.gif')
+})
+Mousetrap.bind("s", function(){
+	showText("isn't fair.")
+	setBgImage('fair.gif')
+})
+Mousetrap.bind("d", function(){
+	typeText("Almost ever.", 10)
+	setBgImage('broadcity.gif')
+})
+Mousetrap.bind("f", function(){
+	showText2("But let's")
+
+})
+Mousetrap.bind("j", function(){
+	showText2("try to")
+	setBgImage('broadcity.gif')
+})
+Mousetrap.bind("k", function(){
+	showText2("focus on")
+	setBgImage('hep.gif')
+})
+Mousetrap.bind("l", function(){
+	showText2("the")
+	setBgImage('broadcity.gif')
+})
+Mousetrap.bind(";", function(){
+	showText2("good stuff.")
+	setBgImage('pup.gif')
+})
+
+Mousetrap.bind("x", function(){
+	playSound2("camel")
+})
+Mousetrap.bind("y", function(){
+	playSound2("moonlight")
+	setBgImage('rings.gif')
+	$('h1').remove()
+})
+Mousetrap.bind("c", function(){
+	playSound("sorry")
+})
+Mousetrap.bind("v", function(){
+	playSound("choir")
+})
+Mousetrap.bind("b", function(){
+	playSound("beep")
+})
+Mousetrap.bind("enter", function(){
+	setBgImage('bronson.gif')
+})
+
+Mousetrap.bind("space", function(){
+	setBgColor('white')
+	setTextColor('white')
+})
+Mousetrap.bind("backspace", function(){
+	$('h1').remove()
+})
+
+//show multiple lines of text
+function showText (text){
+    $('#textDiv').append("<h1>"+text+"</h1>");
+    //scrolls to the bottom
+    $('#bottom')[0].scrollIntoView(false);
+
+}
+
+//replace the same text with new text
+function showText2 (text){
+    if($('#mainText').length == 0){
+        $('#textDiv').append("<h1 id='mainText'>"+text+"</h1>");
+    }
+    else {
+        $('#mainText').text(text);
+    }
+}
+function typeText(string, speed) {
+    var c = 0;
+    $('#textDiv').append('<h1></h1>');
+    var dest = $('h1:last')[0]; 
+    var i = setInterval(function () { //basically a while loop with a delay between each iteration
+        if (c >= string.length) {
+            $(dest).html(string);
+            clearInterval(i);
+        } else {
+            $('<span>').text(string[c]).
+            appendTo(dest);
+            c += 1;
+        }
+    }, speed); //this is the delay in milliseconds between each character, increase to slow down, decrease to speed up
+};
+//sounds overlap one another
+function playSound (id) {
+    sound = $("#" + id)[0]
+    if (sound.ended){sound.currentTime = 0};
+    if (sound.currentTime > 0){
+        sound.currentTime = 0
+    } else {
+        sound.play()
+    }
+}
+//one sound at a time
+var playSound2 = function(id) {
+    $(".played").each(function(){
+        this.pause();
+        this.currentTime = 0
+    }); 
+    sound = $("#" + id).addClass("played")[0]
+    if (sound.ended){sound.currentTime = 0};
+    if (sound.currentTime > 0){
+        sound.currentTime = 0
+    } else {
+        sound.play()
+    }
+
+}
+function setBgImage(fileName){
+    $("html").css('background-image', 'url('+fileName+')'); 
+}
+function setBgColor(color){
+    $("html").css('background-color', color); 
+    //image overrides color so we need to clear any background images
+    $('html').css('background-image', "")
+}
+function setTextColor(color){
+    $('html').css('color', color)
+}
+</script>
+<audio id="moonlight" src="moonlight.mp3" preload="auto"></audio>
+<audio id="camel" src="camelwalk.mp3" preload="auto"></audio>
+<audio id="sorry" src="sorry.mp3" preload="auto"></audio>
+<audio id="choir" src="choir.mp3" preload="auto"></audio>
+<audio id="beep" src="beep.mp3" preload="auto"></audio>
+<div id="textDiv">
+<h1>Try to maintain order at first: X, A, S, D, F, J, K, L, ; .</h1>
+</div>
+<span id="bottom"></span>
