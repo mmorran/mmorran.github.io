@@ -1,0 +1,216 @@
+<style>
+h1 {
+	text-align: center;
+	font-size: 1em;
+	font-family: helvetica;
+	color: black;
+}
+#textDiv{
+    margin-top: 8%;
+}
+#imageDiv {
+    width: 640px;
+    height: 480px;
+    display: block;
+    margin: auto;
+    background: url(blackjack.png) no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+html { 
+  background: url(suzie.jpg) no-repeat center center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 640px;
+ height: 480px;
+  margin: auto;
+  margin-top: 8%;
+}
+</style>
+<script src="../lib/jquery-1.11.1.min.js"></script>
+<script src="../lib/mousetrap.min.js"></script>
+<script>
+Mousetrap.bind("a", function(){
+	setBgImage('dec1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("s", function(){
+    setBgImage('dec2.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("d", function(){
+    setBgImage('dec3.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("f", function(){
+    setBgImage('dec4.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("g", function(){
+    setBgImage('joey1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("h", function(){
+    setBgImage('joey2.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("j", function(){
+    setBgImage('joey3.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("k", function(){
+    setBgImage('joey4.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("l", function(){
+    setBgImage('maddy1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("z", function(){
+    setBgImage('maddy2.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("x", function(){
+    setBgImage('maddy3.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("c", function(){
+    setBgImage('maddy4.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("v", function(){
+    setBgImage('will1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("b", function(){
+    setBgImage('will2.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("n", function(){
+    setBgImage('Feet1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("m", function(){
+    setBgImage('will4.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("q", function(){
+    setBgImage('Brendan1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("w", function(){
+    setBgImage('Brendan2.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("e", function(){
+    setBgImage('Brendan3.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("r", function(){
+    setBgImage('Fork1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("t", function(){
+    setBgImage('Brendan5.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("y", function(){
+    setBgImage('Fork2.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("u", function(){
+    setBgImage('Brendan4.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("i", function(){
+    setBgImage('Fork3.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("o", function(){
+    setBgImage('Kela1.1.jpg')
+    $('h1').remove()
+})
+Mousetrap.bind("p", function(){
+    setBgImage('will3.1.jpg')
+    $('h1').remove()
+})
+
+//show multiple lines of text
+function showText (text){
+    $('#textDiv').append("<h1>"+text+"</h1>");
+    //scrolls to the bottom
+    $('#bottom')[0].scrollIntoView(false);
+
+}
+
+//replace the same text with new text
+function showText2 (text){
+    if($('#mainText').length == 0){
+        $('#textDiv').append("<h1 id='mainText'>"+text+"</h1>");
+    }
+    else {
+        $('#mainText').text(text);
+    }
+}
+function typeText(string, speed) {
+    var c = 0;
+    $('#textDiv').append('<h1></h1>');
+    var dest = $('h1:last')[0]; 
+    var i = setInterval(function () { //basically a while loop with a delay between each iteration
+        if (c >= string.length) {
+            $(dest).html(string);
+            clearInterval(i);
+        } else {
+            $('<span>').text(string[c]).
+            appendTo(dest);
+            c += 1;
+        }
+    }, speed); //this is the delay in milliseconds between each character, increase to slow down, decrease to speed up
+};
+//sounds overlap one another
+function playSound (id) {
+    sound = $("#" + id)[0]
+    if (sound.ended){sound.currentTime = 0};
+    if (sound.currentTime > 0){
+        sound.currentTime = 0
+    } else {
+        sound.play()
+    }
+}
+//one sound at a time
+var playSound2 = function(id) {
+    $(".played").each(function(){
+        this.pause();
+        this.currentTime = 0
+    }); 
+    sound = $("#" + id).addClass("played")[0]
+    if (sound.ended){sound.currentTime = 0};
+    if (sound.currentTime > 0){
+        sound.currentTime = 0
+    } else {
+        sound.play()
+    }
+
+}
+function setBgImage(fileName){
+    $("html").css('background-image', 'url('+fileName+')');
+}
+function setBgColor(color){
+    $("html").css('background-color', color); 
+    //image overrides color so we need to clear any background images
+    $('html').css('background-image', "")
+}
+function setTextColor(color){
+    $('html').css('color', color)
+}
+</script>
+<div id="textDiv">
+<h1>Press any key to begin.</h1>
+</div>
+<div id= "imageDiv">
+</div>
+<span id="bottom"></span>
